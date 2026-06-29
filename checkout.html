@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Dukaan</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="/index.html" class="brand">duk<span>aan</span></a>
+    <div style="flex:1;"></div>
+    <div class="header-actions">
+      <a href="/login.html" class="js-account-link">Login</a>
+      <a href="/cart.html">🛒 Cart <span class="cart-badge js-cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <h2 style="margin-top:24px;">Checkout</h2>
+  <div id="formError"></div>
+  <div class="checkout-layout" id="checkoutRoot"></div>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/checkout.js"></script>
+</body>
+</html>

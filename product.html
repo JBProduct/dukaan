@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — Dukaan</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="/index.html" class="brand">duk<span>aan</span></a>
+    <form class="search-bar js-search-form">
+      <input type="text" name="q" placeholder="Search for products, brands and more">
+      <button type="submit">Search</button>
+    </form>
+    <div class="header-actions">
+      <a href="/login.html" class="js-account-link">Login</a>
+      <a href="/cart.html">🛒 Cart <span class="cart-badge js-cart-count">0</span></a>
+    </div>
+  </div>
+  <nav class="category-bar">
+    <a href="/index.html">All</a>
+    <a href="/index.html?category=Electronics">Electronics</a>
+    <a href="/index.html?category=Fashion">Fashion</a>
+    <a href="/index.html?category=Home%20%26%20Kitchen">Home &amp; Kitchen</a>
+    <a href="/index.html?category=Beauty">Beauty</a>
+  </nav>
+</header>
+
+<main class="container" id="pdpRoot">
+  <p style="margin-top:20px; color:var(--ink-soft);">Loading product…</p>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2026 Dukaan — a demo store built with plain HTML, CSS &amp; JS.</div>
+    <div><a href="/admin/index.html">Store admin</a></div>
+  </div>
+</footer>
+
+<script src="/js/api.js"></script>
+<script src="/js/product.js"></script>
+</body>
+</html>

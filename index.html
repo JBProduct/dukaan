@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Dukaan</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div id="loginGate" style="display:none;">
+  <main class="container">
+    <div class="form-card">
+      <h2>Admin Login</h2>
+      <div id="adminFormError"></div>
+      <form id="adminLoginForm">
+        <div class="field"><label>Email</label><input type="email" id="adminEmail" value="admin@dukaan.test" required></div>
+        <div class="field"><label>Password</label><input type="password" id="adminPassword" required></div>
+        <button class="btn btn-primary btn-block" type="submit">Login</button>
+      </form>
+      <p class="muted-link">Default: admin@dukaan.test / admin123</p>
+    </div>
+  </main>
+</div>
+
+<div id="dashboard" class="admin-shell" style="display:none;">
+  <aside class="admin-sidebar">
+    <a href="/index.html" class="brand">duk<span>aan</span></a>
+    <nav>
+      <a href="#overview" data-tab="overview" class="active">Overview</a>
+      <a href="#products" data-tab="products">Products</a>
+      <a href="#orders" data-tab="orders">Orders</a>
+      <a href="/index.html">← Back to store</a>
+      <a href="#" id="adminLogout">Logout</a>
+    </nav>
+  </aside>
+  <div class="admin-main" id="adminMain"></div>
+</div>
+
+<script src="/js/api.js"></script>
+<script src="/admin/admin.js"></script>
+</body>
+</html>

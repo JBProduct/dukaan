@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — Dukaan</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="/index.html" class="brand">duk<span>aan</span></a>
+    <div style="flex:1;"></div>
+    <div class="header-actions">
+      <a href="/login.html" class="js-account-link">Login</a>
+      <a href="/cart.html">🛒 Cart <span class="cart-badge js-cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="container" id="accountRoot" style="padding:30px 0 60px;">Loading…</main>
+
+<script src="/js/api.js"></script>
+<script>
+async function loadAccount() {
+  const root = document.getElementById('accountRoot');
+  const { user } = await api.get('/api/auth/me');
+  if (!user) { window.location.href = '/login.html?redirect=/account.html'; return; }
+
+  const { orders } = await api.get('/api/orders');
+
+  root.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <div>
+        <h2>Hi, ${user.name}</h2>
+        <p style="color:var(--ink-soft); margin-top:-8px;">${user.email}</p>
+      </div>
+      <button class="btn btn-outline" id="logoutBtn">Logout</button>
+    </div>
+
+    <h3 style="margin-top:30px;">Order History</h3>
+    ${orders.length === 0 ? '<p style="color:var(--ink-soft);">No orders yet.</p>' : ''}
+    <div style="display:flex; flex-direction:column; gap:14px; margin-top:14px;">
+      ${orders.map((o) => `
+        <div class="cart-row" style="align-items:flex-start;">
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="name">Order #${o.id}</span>
+              <span class="status-badge status-${o.status}">${o.status}</span>
+            </div>
+            <div style="color:var(--ink-soft); font-size:0.85rem; margin:4px 0 8px;">${new Date(o.createdAt).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })}</div>
+            ${o.items.map((it) => `<div style="font-size:0.88rem;">${it.name} × ${it.qty}</div>`).join('')}
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace; font-weight:700;">${money(o.total)}</div>
+        </div>
+      `).join('')}
+    </div>`;
+
+  document.getElementById('logoutBtn').onclick = async () => {
+    await api.post('/api/auth/logout');
+    window.location.href = '/index.html';
+  };
+}
+document.addEventListener('DOMContentLoaded', loadAccount);
+</script>
+</body>
+</html>

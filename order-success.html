@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Placed — Dukaan</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="/index.html" class="brand">duk<span>aan</span></a>
+    <div style="flex:1;"></div>
+    <div class="header-actions">
+      <a href="/login.html" class="js-account-link">Login</a>
+      <a href="/cart.html">🛒 Cart <span class="cart-badge js-cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="order-confirm" id="confirmRoot">Loading…</div>
+</main>
+
+<script src="/js/api.js"></script>
+<script>
+async function loadOrder() {
+  const id = new URLSearchParams(window.location.search).get('id');
+  const root = document.getElementById('confirmRoot');
+  try {
+    const { order } = await api.get(`/api/orders/${id}`);
+    root.innerHTML = `
+      <div class="icon">✅</div>
+      <h2>Order placed!</h2>
+      <p style="color:var(--ink-soft);">Order #${order.id} · ${order.payment.method} · Transaction ${order.payment.transactionId}</p>
+      <div style="text-align:left; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; margin-top:20px;">
+        ${order.items.map((it) => `<div class="summary-row"><span>${it.name} × ${it.qty}</span><span>${money(it.price * it.qty)}</span></div>`).join('')}
+        <div class="summary-row total"><span>Total Paid</span><span>${money(order.total)}</span></div>
+      </div>
+      <p style="margin-top:18px; color:var(--ink-soft); font-size:0.9rem;">Delivering to ${order.delivery.address}, ${order.delivery.city} ${order.delivery.pincode}</p>
+      <div style="margin-top:24px; display:flex; gap:12px; justify-content:center;">
+        <a class="btn btn-outline" href="/account.html">View my orders</a>
+        <a class="btn btn-primary" href="/index.html">Continue shopping</a>
+      </div>`;
+  } catch (e) {
+    root.innerHTML = `<p>${e.message}</p><a class="btn btn-primary" href="/index.html">Back to shop</a>`;
+  }
+}
+document.addEventListener('DOMContentLoaded', loadOrder);
+</script>
+</body>
+</html>

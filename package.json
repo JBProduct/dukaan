@@ -1,0 +1,12 @@
+{
+  "name": "dukaan-store",
+  "version": "1.0.0",
+  "description": "A self-contained e-commerce store - storefront, cart, checkout and admin dashboard. Zero npm dependencies.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

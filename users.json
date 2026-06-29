@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "name": "Store Admin",
+    "email": "admin@dukaan.test",
+    "password": "66ab14b7923c80be610a21a0c56ab533:c610e9b0ca4ba88972f61a6a90e395d27a23e0cd95376012130ca075388ec8cc7c9682ed1d8df47359df67a282357434f6ca44ffbd2cb67d8985f63ab2108ef1",
+    "isAdmin": true,
+    "createdAt": 1735000000000
+  }
+]
