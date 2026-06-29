@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dukaan — everything you need, one cart</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="/index.html" class="brand">duk<span>aan</span></a>
+    <form class="search-bar js-search-form">
+      <input type="text" name="q" placeholder="Search for products, brands and more">
+      <button type="submit">Search</button>
+    </form>
+    <div class="header-actions">
+      <a href="/login.html" class="js-account-link">Login</a>
+      <a href="/cart.html">🛒 Cart <span class="cart-badge js-cart-count">0</span></a>
+    </div>
+  </div>
+  <nav class="category-bar">
+    <a href="/index.html" data-cat="">All</a>
+    <a href="/index.html?category=Electronics" data-cat="Electronics">Electronics</a>
+    <a href="/index.html?category=Fashion" data-cat="Fashion">Fashion</a>
+    <a href="/index.html?category=Home%20%26%20Kitchen" data-cat="Home & Kitchen">Home &amp; Kitchen</a>
+    <a href="/index.html?category=Beauty" data-cat="Beauty">Beauty</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <h1>The neighbourhood shop, open all night.</h1>
+      <p>Honest prices, hand-picked stock, and a stall for every category — electronics to everyday essentials.</p>
+      <div class="hero-stalls">
+        <span class="stall-chip">🚚 Free delivery over ₹999</span>
+        <span class="stall-chip">↩️ 7-day returns</span>
+        <span class="stall-chip">🔒 Secure checkout</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <div class="toolbar">
+    <div class="chip-row" id="categoryChips">
+      <a class="chip" data-cat="">All</a>
+      <a class="chip" data-cat="Electronics">Electronics</a>
+      <a class="chip" data-cat="Fashion">Fashion</a>
+      <a class="chip" data-cat="Home & Kitchen">Home &amp; Kitchen</a>
+      <a class="chip" data-cat="Beauty">Beauty</a>
+    </div>
+    <select class="sort-select" id="sortSelect">
+      <option value="">Sort: Featured</option>
+      <option value="price_asc">Price: Low to High</option>
+      <option value="price_desc">Price: High to Low</option>
+      <option value="rating">Customer Rating</option>
+    </select>
+  </div>
+
+  <div class="section-title">
+    <h2 id="gridTitle">All products</h2>
+    <span id="resultCount" style="color: var(--ink-soft); font-size: 0.88rem;"></span>
+  </div>
+
+  <div class="product-grid" id="productGrid"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <div class="icon">🔎</div>
+    <p>No products matched. Try a different search or category.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2026 Dukaan — a demo store built with plain HTML, CSS &amp; JS.</div>
+    <div><a href="/admin/index.html">Store admin</a></div>
+  </div>
+</footer>
+
+<script src="/js/api.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
